@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pwrselect=$(printf 'Power Off\nReboot\nSuspend\nDisplay Manager\n' | wofi --dmenu)
+pwrselect=$(printf 'Power Off\nReboot\nSuspend\nDisplay Manager\n' | wofi --dmenu -j)
 case "$pwrselect" in
     "Power Off") systemctl poweroff ;;
     "Reboot") systemctl reboot ;;
