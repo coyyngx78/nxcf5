@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu wofi --show drun
+set $menu wofi --show drun --cache /dev/null
 
 set $browser zen-beta
 set $file-manager thunar
@@ -95,7 +95,7 @@ input type:touchpad {
     bindsym $mod+t exec $file-manager
 
     # Clipboard
-    bindsym $mod+y exec "cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+    bindsym $mod+y exec "cliphist list | wofi --dmenu --cache /dev/null | cliphist decode | wl-copy"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

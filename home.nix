@@ -63,6 +63,7 @@ in {
         matching = "fuzzy";
         allow_images = true;
         parse_search = true;
+        width = "20%";
       };
     };
     waybar.enable = true;
@@ -95,7 +96,6 @@ in {
           typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
           setopt CORRECT
-          setopt CORRECT_ALL
         ''
       ];
     };
