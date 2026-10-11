@@ -25,6 +25,7 @@ in {
     python3
     rustc
     cargo
+    lua
     unstable.fastfetch
     unstable.fetch
     btop
@@ -49,7 +50,6 @@ in {
     grim
     swaybg
     networkmanagerapplet
-    adwaita-icon-theme
     wl-clipboard
     zsh-powerlevel10k
   ];

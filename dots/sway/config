@@ -117,6 +117,8 @@ input type:touchpad {
 
     bindsym $mod+p exec /home/codx78/nixos-conf/dots/sway/wofipower
 
+    focus_follows_mouse yes
+
 #
 # Moving around:
 #
