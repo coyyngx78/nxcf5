@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   lib,
-  config,
   ...
 }: let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
