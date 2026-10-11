@@ -106,6 +106,9 @@ in {
 
       config = {
         options = ''
+          vim.g.autoformat = false;
+
+          -- Let .c and .h files get 4 space indentation
           vim.api.nvim_create_autocmd("FileType", {
             pattern = { "c", "h" },
             callback = function()
