@@ -1,0 +1,133 @@
+// -*- mode: json -*-
+
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"sway/workspaces",
+		"custom/right-arrow-dark"
+	],
+	"modules-center": [
+		"custom/left-arrow-dark",
+		"clock#1",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"clock#2",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"clock#3",
+		"custom/right-arrow-dark"
+	],
+	"modules-right": [
+		"custom/left-arrow-dark",
+		"backlight",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"pulseaudio",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"power-profiles-daemon",
+		"battery",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"idle_inhibitor",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"tray"
+	],
+
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+	},
+
+	"clock#1": {
+		"format": "{:%a}",
+		"tooltip": false
+	},
+	"clock#2": {
+		"format": "{:%I:%M %p}",
+		"tooltip": false
+	},
+	"clock#3": {
+		"format": "{:%m-%d}",
+		"tooltip": false
+	},
+	"backlight": {
+	    "device": "intel_backlight", // Optional: replace with your GPU interface if it doesn't auto-detect
+	    "format": "{icon} {percent}%",
+	    "format-icons": ["", "", "", "", "", "", "", "", ""], // Nerdfonts icons
+	    "on-scroll-up": "",
+	    "on-scroll-down": ""
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 0,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+	"power-profiles-daemon": {
+	    "format": "{icon}",
+	    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+	    "tooltip": true,
+	    "format-icons": {
+	        "default": "",
+	        "performance": "",
+	        "balanced": "",
+	        "power-saver": ""
+	    }
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"format-charging": "{capacity}% "
+	},
+    "idle_inhibitor": {
+        "format": "lock: {icon}",
+        "format-icons": {
+            "activated": "X",
+            "deactivated": ""
+        }
+    },
+	"tray": {
+		"icon-size": 20
+	}
+}
