@@ -108,11 +108,15 @@ input type:touchpad {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m '[WARN] Are you sure you want to exit?' \
-    -B 'Display Manager' 'swaymsg exit' \
-    -B 'Reboot' 'systemctl reboot' \
-    -B 'Shut Down' 'systemctl poweroff' \
-    -s 'Nah'
+    # bindsym $mod+p exec swaynag -t warning -m '[WARN] What action would you like to perform?' \
+    # -B 'Display Manager' 'swaymsg exit' \
+    # -B 'Reboot' 'systemctl reboot' \
+    # -B 'Shut Down' 'systemctl poweroff' \
+    # -B 'Lock Screen' 'systemctl suspend' \
+    # -s 'Nah'
+
+    bindsym $mod+p exec /home/codx78/nixos-conf/dots/sway/wofipower
+
 #
 # Moving around:
 #
@@ -258,9 +262,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 
+# USWM manages the bar
 # bar swaybar_command waybar
-
-# blur enable
-# animation_duration_ms 140
 
 include /etc/sway/config.d/*
