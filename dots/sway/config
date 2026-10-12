@@ -18,7 +18,7 @@ set $term kitty
 # Your preferred application launcher
 set $menu wofi --show drun
 
-set $browser zen-beta
+set $browser librewolf
 set $file-manager thunar
 
 ### Output configuration

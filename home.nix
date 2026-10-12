@@ -33,7 +33,8 @@ in {
 
     # GUI Apps
     vlc
-    inputs.zen-browser.packages."${pkgs.system}".default
+    # inputs.zen-browser.packages."${pkgs.system}".default
+    librewolf
     tor-browser
     prismlauncher
     unstable.freetube
