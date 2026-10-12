@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu wofi --show drun --cache /dev/null
+set $menu wofi --show drun
 
 set $browser zen-beta
 set $file-manager thunar

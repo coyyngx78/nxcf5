@@ -63,7 +63,7 @@ in {
         matching = "fuzzy";
         allow_images = true;
         parse_search = true;
-        width = "20%";
+        width = "30%";
       };
     };
     waybar.enable = true;
