@@ -25,6 +25,7 @@ in {
     python3
     rustc
     cargo
+    lua
     unstable.fastfetch
     unstable.fetch
     btop
@@ -49,7 +50,6 @@ in {
     grim
     swaybg
     networkmanagerapplet
-    adwaita-icon-theme
     wl-clipboard
     zsh-powerlevel10k
   ];
@@ -63,6 +63,7 @@ in {
         matching = "fuzzy";
         allow_images = true;
         parse_search = true;
+        width = "30%";
       };
     };
     waybar.enable = true;
@@ -95,7 +96,6 @@ in {
           typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
           setopt CORRECT
-          setopt CORRECT_ALL
         ''
       ];
     };

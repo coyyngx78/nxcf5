@@ -95,7 +95,7 @@ input type:touchpad {
     bindsym $mod+t exec $file-manager
 
     # Clipboard
-    bindsym $mod+y exec "cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+    bindsym $mod+y exec "cliphist list | wofi --dmenu --cache /dev/null | cliphist decode | wl-copy"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -116,6 +116,8 @@ input type:touchpad {
     # -s 'Nah'
 
     bindsym $mod+p exec /home/codx78/nixos-conf/dots/sway/wofipower
+
+    focus_follows_mouse yes
 
 #
 # Moving around:
