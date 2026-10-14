@@ -115,7 +115,7 @@ input type:touchpad {
     # -B 'Lock Screen' 'systemctl suspend' \
     # -s 'Nah'
 
-    bindsym $mod+p exec /home/codx78/nixos-conf/dots/sway/wofipower
+    bindsym $mod+p exec ~/.nixos-conf/dots/sway/wofipower
 
     focus_follows_mouse yes
 

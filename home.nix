@@ -27,18 +27,15 @@ in {
     cargo
     lua
     unstable.fastfetch
-    unstable.fetch
     btop
     nodejs
 
     # GUI Apps
     vlc
-    # inputs.zen-browser.packages."${pkgs.system}".default
     librewolf
     tor-browser
     prismlauncher
     unstable.freetube
-    kitty
     foot
     ristretto
     supertuxkart
@@ -52,10 +49,37 @@ in {
     swaybg
     networkmanagerapplet
     wl-clipboard
-    zsh-powerlevel10k
   ];
 
   programs = {
+    fish = {
+      enable = true;
+      shellAliases = {
+        clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d";
+        nrsf = "sudo nixos-rebuild switch --flake ~/.nixos-conf#snowbook";
+        sec = "nvim ~/.nixos-conf/configuration.nix";
+        seh = "nvim ~/.nixos-conf/home.nix";
+      };
+      interactiveShellInit = ''
+        set fish_greeting ""
+      '';
+    };
+
+    kitty = {
+      enable = true;
+      font = {
+        name = "Maple Mono NF";
+        package = pkgs.maple-mono.NF;
+        size = 11;
+      };
+      themeFile = "OneDark-Pro";
+      settings = {
+        confirm_os_window_close = 0;
+        shell = "fish";
+      };
+      shellIntegration.enableFishIntegration = true;
+    };
+
     wofi = {
       enable = true;
       settings = {
@@ -69,40 +93,8 @@ in {
     };
     waybar.enable = true;
 
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      history.size = 500;
-
-      shellAliases = {
-        clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d";
-        nrsf = "sudo nixos-rebuild switch --flake /home/codx78/nixos-conf#snowbook";
-        sec = "nvim ~/nixos-conf/configuration.nix";
-        seh = "nvim ~/nixos-conf/home.nix";
-      };
-
-      initContent = lib.mkMerge [
-        (lib.mkBefore ''
-          if [[ -r "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-            source "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-          fi
-        '')
-
-        ''
-          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-          [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-          typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-
-          setopt CORRECT
-        ''
-      ];
-    };
     lazyvim = {
       enable = true;
-      ignoreBuildNotifications = true;
 
       config = {
         options = ''
@@ -176,5 +168,6 @@ in {
     ".config/sway/config".source = ./dots/sway/config;
     ".config/waybar/config.jsonc".source = ./dots/waybar/config;
     ".config/waybar/style.css".source = ./dots/waybar/style.css;
+    ".config/fastfetch/config.jsonc".source = ./dots/fastfetch/config.jsonc;
   };
 }

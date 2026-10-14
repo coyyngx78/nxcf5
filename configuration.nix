@@ -43,24 +43,30 @@
     isNormalUser = true;
     description = "codx78";
     extraGroups = ["networkmanager" "wheel" "video" "audio"];
-    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    curl
-    zip
-    unzip
-    psmisc
-    gcc
-    clang
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      vim
+      wget
+      curl
+      zip
+      unzip
+      psmisc
+      gcc
+      clang
+    ];
+
+    variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      SUDO_EDITOR = "nvim";
+    };
+  };
 
   programs = {
     firefox.enable = true;
-    zsh.enable = true;
 
     git = {
       enable = true;
@@ -88,6 +94,7 @@
       };
     };
 
+    fish.enable = true;
     thunar.enable = true;
   };
 
@@ -169,8 +176,6 @@
   '';
 
   nix.settings.auto-optimise-store = true;
-
-  environment.pathsToLink = ["/share/zsh"];
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
