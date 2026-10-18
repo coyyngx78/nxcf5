@@ -47,6 +47,8 @@ in {
     networkmanagerapplet
     wl-clipboard
     sway-audio-idle-inhibit
+    rofi
+    waybar
   ];
 
   programs = {
@@ -78,22 +80,8 @@ in {
       shellIntegration.enableFishIntegration = true;
     };
 
-    wofi = {
-      enable = true;
-      settings = {
-        mode = "drun";
-        insensitive = true;
-        matching = "fuzzy";
-        allow_images = true;
-        parse_search = true;
-        width = "30%";
-      };
-    };
-    waybar.enable = true;
-
     lazyvim = {
       enable = true;
-
       config = {
         options = ''
           vim.g.autoformat = false;
@@ -167,5 +155,6 @@ in {
     ".config/waybar/config.jsonc".source = ./dots/waybar/config;
     ".config/waybar/style.css".source = ./dots/waybar/style.css;
     ".config/fastfetch/config.jsonc".source = ./dots/fastfetch/config.jsonc;
+    ".config/rofi/config.rasi".source = ./dots/rofi/config.rasi;
   };
 }
