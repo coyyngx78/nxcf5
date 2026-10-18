@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu wofi --show drun
+set $menu rofi -show drun
 
 set $browser librewolf
 set $file-manager thunar
@@ -94,7 +94,7 @@ input type:touchpad {
     bindsym $mod+t exec $file-manager
 
     # Clipboard
-    bindsym $mod+y exec "cliphist list | wofi --dmenu --cache /dev/null | cliphist decode | wl-copy"
+    bindsym $mod+y exec "cliphist list | rofi -dmenu -i | cliphist decode | wl-copy"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -114,7 +114,7 @@ input type:touchpad {
     # -B 'Lock Screen' 'systemctl suspend' \
     # -s 'Nah'
 
-    bindsym $mod+p exec ~/.nixos-conf/dots/sway/wofipower
+    bindsym $mod+p exec ~/.nixos-conf/dots/sway/powermenu
 
     focus_follows_mouse yes
 
@@ -198,7 +198,7 @@ input type:touchpad {
     default_border none
 
     gaps inner 1
-    gaps outer 1
+    gaps outer 0
 #
 # Scratchpad:
 #
