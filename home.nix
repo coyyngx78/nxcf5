@@ -1,9 +1,5 @@
-{
-  pkgs,
-  inputs,
-  lib,
-  ...
-}: let
+{ pkgs, inputs, ... }:
+let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in {
   home = {
@@ -13,7 +9,7 @@ in {
   };
   programs.home-manager.enable = true;
 
-  imports = [inputs.lazyvim.homeManagerModules.default];
+  imports = [ inputs.lazyvim.homeManagerModules.default ];
 
   home.packages = with pkgs; [
     # CLI tools
@@ -39,6 +35,7 @@ in {
     foot
     ristretto
     supertuxkart
+    keepassxc
 
     # Misc
     pavucontrol
@@ -49,6 +46,7 @@ in {
     swaybg
     networkmanagerapplet
     wl-clipboard
+    sway-audio-idle-inhibit
   ];
 
   programs = {
