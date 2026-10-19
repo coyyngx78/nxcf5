@@ -54,6 +54,7 @@
       zip
       unzip
       psmisc
+      file
       gcc
       clang
     ];

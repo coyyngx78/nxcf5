@@ -96,6 +96,11 @@ in {
             end,
           })
         '';
+        plugins = ''
+          return {
+            { "echasnovski/mini.pairs", enabled = false },
+          }   
+        '';
       };
 
       extras.lang = {
