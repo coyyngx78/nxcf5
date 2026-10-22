@@ -41,13 +41,13 @@ output "*" {
 # Default Wallpaper
 # /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
 
+
+# Autostarts
 seat "*" xcursor_theme Adwaita 32
-
 exec nm-applet --indicator
-
 exec wl-paste --watch cliphist store
-
 exec sway-audio-idle-inhibit
+exec lxqt-policykit-agent
 
 ### Idle configuration
 #
