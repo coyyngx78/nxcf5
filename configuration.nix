@@ -57,6 +57,8 @@
       file
       gcc
       clang
+      tuigreet
+      adwaita-icon-theme
     ];
 
     variables = {
@@ -103,8 +105,16 @@
     flatpak.enable = true;
     gvfs.enable = true;
     openssh.enable = true;
-    displayManager.gdm.enable = true;
     gnome.gnome-keyring.enable = true;
+    greetd = {
+      enable = true;
+      restart = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet -r --remember-session --user-menu";
+        };
+      };
+    };
   };
 
   fonts = {
