@@ -78,6 +78,7 @@ in {
         shell = "fish";
       };
       shellIntegration.enableFishIntegration = true;
+      package = unstable.kitty;
     };
 
     lazyvim = {
@@ -85,8 +86,8 @@ in {
       config = {
         options = ''
           vim.g.autoformat = false;
-
-          -- Let .c and .h files get 4 space indentation
+        '';
+        autocmds = ''
           vim.api.nvim_create_autocmd("FileType", {
             pattern = { "c", "h" },
             callback = function()
@@ -98,34 +99,46 @@ in {
         '';
       };
 
-      extras.lang = {
-        nix = {
-          enable = true;
-          config = ''
-            return {
-              {
-                "neovim/nvim-lspconfig",
-                opts = {
-                  servers = {
-                    nil_ls = { enabled = false },
-                    nixd = {},
+      plugins = {
+        noautopairs = ''
+          return {
+            { "nvim-mini/mini.pairs", enabled = false },
+          }   
+        '';
+      };
+
+      extras = {
+        editor.telescope.enable = true;
+
+        lang = {
+          nix = {
+            enable = true;
+            config = ''
+              return {
+                {
+                  "neovim/nvim-lspconfig",
+                  opts = {
+                    servers = {
+                      nil_ls = { enabled = false },
+                      nixd = {},
+                    },
                   },
                 },
-              },
-              {
-                "stevearc/conform.nvim",
-                opts = {
-                  formatters_by_ft = {
-                    nix = { "alejandra" },
+                {
+                  "stevearc/conform.nvim",
+                  opts = {
+                    formatters_by_ft = {
+                      nix = { "alejandra" },
+                    },
                   },
                 },
-              },
-            }
-          '';
-        };
-        clangd = {
-          enable = true;
-          installDependencies = true;
+              }
+            '';
+          };
+          clangd = {
+            enable = true;
+            installDependencies = true;
+          };
         };
       };
       extraPackages = with pkgs; [

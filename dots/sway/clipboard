@@ -1,0 +1,5 @@
+#!/bin/sh
+clipselect=$(cliphist list | rofi -dmenu -i)
+if [ -n "$clipselect" ]; then
+    cliphist decode $clipselect | wl-copy
+fi

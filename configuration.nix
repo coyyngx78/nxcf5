@@ -54,6 +54,7 @@
       zip
       unzip
       psmisc
+      file
       gcc
       clang
     ];
@@ -139,15 +140,13 @@
 
   services.printing = {
     enable = true;
-    browsing = true;
-    browsedConf = ''
-      BrowseDNSSDSubTypes _cups,_print
-      BrowseLocalProtocols all
-      BrowseRemoteProtocols all
-      CreateIPPPrinterQueues All
-      BrowseProtocols all
-    '';
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
   };
+  services.ipp-usb.enable = true;
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;

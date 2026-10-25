@@ -24,7 +24,8 @@ set $file-manager thunar
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-## output * 
+# output * 
+# /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
 #
 # Example configuration:
 #
@@ -38,16 +39,12 @@ output "*" {
     adaptive_sync on
 }
 
-# Default Wallpaper
-# /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
-
+# Autostart
 seat "*" xcursor_theme Adwaita 32
-
 exec nm-applet --indicator
-
 exec wl-paste --watch cliphist store
-
 exec sway-audio-idle-inhibit
+exec lxqt-policykit-agent
 
 ### Idle configuration
 #
@@ -56,7 +53,7 @@ exec sway-audio-idle-inhibit
 
 exec swayidle -w \
      timeout 300 'swaylock -f -c 000000' \
-     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+     timeout 900 'systemctl suspend' \
      before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -94,7 +91,7 @@ input type:touchpad {
     bindsym $mod+t exec $file-manager
 
     # Clipboard
-    bindsym $mod+y exec "cliphist list | rofi -dmenu -i | cliphist decode | wl-copy"
+    bindsym $mod+y exec ~/.nixos-conf/dots/sway/clipboard
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -197,8 +194,8 @@ input type:touchpad {
     
     default_border none
 
-    gaps inner 1
-    gaps outer 0
+    gaps inner 2
+    gaps outer 2
 #
 # Scratchpad:
 #
