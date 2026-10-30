@@ -25,6 +25,7 @@ in {
     unstable.fastfetch
     btop
     nodejs
+    nmap
 
     # GUI Apps
     vlc
