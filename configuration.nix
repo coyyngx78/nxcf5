@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{ pkgs, inputs, ... }: {
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -34,7 +30,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
     users.codx78 = ./home.nix;
     backupFileExtension = "hm-backup";
   };
@@ -175,6 +171,7 @@
     pam.services = {
       login.fprintAuth = false;
       swaylock.fprintAuth = false;
+      tuigreet.fptinAuth = false;
     };
     rtkit.enable = true;
     polkit.enable = true;
