@@ -1,12 +1,12 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, lib, ... }: {
   boot = {
     loader = {
       systemd-boot.enable = true;
-      grub.enable = false;
       efi.canTouchEfiVariables = true;
     };
     kernel.sysctl."kernel.sysrq" = 1;
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = ["quiet"];
   };
 
   fileSystems = {
@@ -109,6 +109,9 @@
         default_session = {
           command = "${pkgs.tuigreet}/bin/tuigreet -r --remember-session --user-menu";
         };
+        terminal = {
+          vt = lib.mkForce "next";
+        };
       };
     };
   };
@@ -171,7 +174,7 @@
     pam.services = {
       login.fprintAuth = false;
       swaylock.fprintAuth = false;
-      tuigreet.fptinAuth = false;
+      greetd.fprintAuth = false;
     };
     rtkit.enable = true;
     polkit.enable = true;
